@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 
 const BASE_URL = import.meta.env.MODE === "production" 
     ? "https://chat-app-production-1876.up.railway.app" 
-    : "/";
+    : "/api";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
