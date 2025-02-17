@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { Server } from "socket.io";
-import http from "http";
+
 
 import path from "path";
 
@@ -33,15 +33,13 @@ app.get('/api/status', (req, res) => {
     res.json({ message: "Backend is running!" });
 });
 
-const server = http.createServer(app); // Si tu utilises Express
 const io = new Server(server, {
   cors: {
-    origin: "https://chatyrandom.netlify.app", // Ton frontend Netlify
+    origin: "https://chatyrandom.netlify.app", // URL de ton frontend
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
   },
-  transports: ["websocket", "polling"], // Assurer que le transport websocket est activé
 });
 
 
