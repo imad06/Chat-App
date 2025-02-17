@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { Server } from "socket.io";
 
 import path from "path";
 
@@ -31,6 +32,14 @@ app.get('/api/status', (req, res) => {
     res.json({ message: "Backend is running!" });
 });
 
+const io = new Server(server, {
+  cors: {
+    origin: "https://chatyrandom.netlify.app", // URL de ton frontend
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,
+  },
+});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
