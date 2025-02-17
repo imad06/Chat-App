@@ -20,13 +20,11 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["https://chat-app-production-1876.up.railway.app", "https://chatyrandom.netlify.app"], 
-    credentials: true,
-  })
-);
-
+app.use(cors({
+  origin: 'https://chatyrandom.netlify.app',  // Remplacer par ton domaine si nécessaire
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.get('/api/status', (req, res) => {
