@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chat-app-production-1876.up.railway.app",
+    origin: ["https://chat-app-production-1876.up.railway.app", "https://chatyrandom.netlify.app"], 
     credentials: true,
   })
 );
