@@ -26,9 +26,14 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 app.options("*", cors());
 app.use(express.json({ limit: "10mb" }));  // Augmente la limite des JSON
 app.use(express.urlencoded({ extended: true, limit: "10mb" })); // Augmente la limite des fichiers
+app.use((req, res, next) => {
+  console.log("📦 Taille du body:", JSON.stringify(req.body).length, "bytes");
+  next();
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
