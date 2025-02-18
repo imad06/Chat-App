@@ -7,7 +7,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://chat-app-production-1876.up.railway.app"],
+    origin: ["*"],
   },
 });
 
