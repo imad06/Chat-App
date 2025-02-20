@@ -87,6 +87,8 @@ export const logout = (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
+    res.setHeader("Access-Control-Allow-Origin", "https://chatyrandom.netlify.app");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
     const { profilePic } = req.body;
     const userId = req.user._id;
 
